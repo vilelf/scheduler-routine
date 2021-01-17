@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Title from './components/Title'
+import WeekTable from './components/WeekTable'
+import Activities from './components/Activities'
+import styled from 'styled-components';
+import { Provider } from 'react-redux';
+import store from './store'
+
+const Wrapper = styled.div`
+  font-family: 'Balsamiq Sans', cursive;
+`;
+
+const SubWrapper = styled.div`
+  display: flex;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      <Provider store={store}>
+        <Title />
+        <SubWrapper>
+          <Activities />
+          <WeekTable />
+        </SubWrapper>
+      </Provider>
+    </Wrapper>
   );
 }
 
